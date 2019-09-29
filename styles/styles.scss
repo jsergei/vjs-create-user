@@ -1,0 +1,77 @@
+@import './reset.scss';
+
+main {
+    margin: 20px auto;
+    width: 500px;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+header {
+    font-weight: bold;
+    margin: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+form {
+    padding-top: 10px;
+}
+
+.form-controls {
+    display: flex;
+
+    article {
+        min-width: 350px;
+        width: 350px;
+    }
+
+    aside {
+        flex: 1 1 auto;
+        margin-left: 10px;
+
+        img {
+            width: 100px;
+            margin-left: 20px;
+        }
+    }
+
+    p + p {
+        padding-top: 10px;
+    }
+    
+    label {
+        width: 140px;
+        display: inline-block;
+    }
+    
+    input {
+        height: 1rem;
+        line-height: 1rem;
+        font-size: 1rem;
+        width: 200px;
+    }
+}
+
+
+footer {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+button {
+    width: 80px;
+    height: 1.5rem;
+}
+
+button + button {
+    margin-left: 1rem;
+}
+
+input:invalid {
+    border: 2px solid red;
+}
