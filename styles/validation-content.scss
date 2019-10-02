@@ -1,0 +1,60 @@
+.validation-content {
+    flex: 1 1 auto;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-left: 1px solid black;
+    padding-left: 10px;
+}
+
+.validation-content__new {
+    background-image: url('../icons/question_mark.png');
+    width: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: none;
+}
+
+.validation-content__username {
+    flex: 1 1 auto;
+}
+
+.validation-content__header {
+    font-weight: bold;
+    background: linear-gradient(0deg, green, transparent);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 5px 10px;
+}
+
+.val-rule__mark {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex: 0 0 auto;
+}
+
+.val-rule__valid-mark {
+    background-image: url('../icons/validation-tick-valid.png');
+}
+
+.val-rule__invalid-mark {
+    background-image: url('../icons/validation-tick-invalid.png');
+}
+
+.val-rule {
+    align-items: center;
+    display: flex;
+}
+
+.val-rule + .val-rule {
+    margin-top: 5px;
+}
+
+.val-rule__text {
+    margin-left: 5px;
+}
