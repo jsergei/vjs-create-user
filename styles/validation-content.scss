@@ -22,11 +22,18 @@
 
 .validation-content__header {
     font-weight: bold;
-    background: linear-gradient(0deg, green, transparent);
     border-radius: 4px;
     margin-bottom: 10px;
     text-align: center;
     padding: 5px 10px;
+}
+
+.validation-content__header-valid {
+    background: linear-gradient(0deg, green, transparent);
+}
+
+.validation-content__header-invalid {
+    background: linear-gradient(0deg, red, transparent);
 }
 
 .val-rule__mark {
