@@ -8,12 +8,11 @@
     padding-left: 10px;
 }
 
-.validation-content__new {
+.validation-content__noselect {
     background-image: url('../icons/question_mark.png');
     width: 100px;
     background-size: contain;
     background-repeat: no-repeat;
-    display: none;
 }
 
 .validation-content__username {
@@ -28,11 +27,11 @@
     padding: 5px 10px;
 }
 
-.validation-content__header-valid {
+.validation-content__header.valid {
     background: linear-gradient(0deg, green, transparent);
 }
 
-.validation-content__header-invalid {
+.validation-content__header.invalid {
     background: linear-gradient(0deg, red, transparent);
 }
 
@@ -45,11 +44,11 @@
     flex: 0 0 auto;
 }
 
-.val-rule__valid-mark {
+.val-rule__mark.valid {
     background-image: url('../icons/validation-tick-valid.png');
 }
 
-.val-rule__invalid-mark {
+.val-rule__mark.invalid {
     background-image: url('../icons/validation-tick-invalid.png');
 }
 
@@ -64,4 +63,8 @@
 
 .val-rule__text {
     margin-left: 5px;
+}
+
+.hidden {
+    display: none;
 }

@@ -35,10 +35,28 @@
                     </p>
                 </article>
                 <aside class="validation-content">
-                    <section class="validation-content__new"></section>
-                    <section class="validation-content__username">
-                        <header class="validation-content__header">Username validation requirements</header>
-                        <ul id="val-rule-list"></ul>
+                    <section class="validation-content__noselect hidden"></section>
+                    <section class="validation-content__username hidden">
+                        <header class="validation-content__header">Username</header>
+                        <ul class="val-rule-list"></ul>
+                    </section>
+                    <section class="validation-content__email hidden">
+                        <header class="validation-content__header">Email</header>
+                        <div class="val-rule">
+                            <div class="val-rule__mark"></div>
+                            <div class="val-rule__text">Must be a valid email address, such as John.Smith@example.com</div>
+                        </div>
+                    </section>
+                    <section class="validation-content__password hidden">
+                        <header class="validation-content__header">Password</header>
+                        <ul class="val-rule-list"></ul>
+                    </section>
+                    <section class="validation-content__confirm-password hidden">
+                        <header class="validation-content__header">Confirm password</header>
+                        <div class="val-rule">
+                            <div class="val-rule__mark"></div>
+                            <div class="val-rule__text">Must match with the password above</div>
+                        </div>
                     </section>
                 </aside>
             </section>
