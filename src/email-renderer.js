@@ -12,6 +12,6 @@ export class EmailRenderer extends ControlRenderer {
     }
 
     _updateContent(state) {
-        this._updateValRuleNodeState(this._valRuleNode.firstElementChild, state.valid);
+        this._updateValRuleNodeState(this._valRuleNode, state.valid);
     }
 }

@@ -8,7 +8,7 @@ export class UserValidator {
 
         this._form = {
             valid: false,
-            active: true
+            active: false
         };
         this._formCallback = () => {};
 
@@ -33,18 +33,20 @@ export class UserValidator {
         this._registerValidationEvents(this._usernameEl,
             isActive => {
                 this._username = {...this._username, active: isActive};
+                this._usernameCallback.call(null, this._username);
             },
             this._validateUsername.bind(this));
-        this._validateUsername(this._usernameEl.value, this._usernameEl.validity);
+        this._validateUsername();
 
         this._registerValidationEvents(this._emailEl,
             isActive => {
                 this._email = {...this._email, active: isActive};
+                this._emailCallback.call(null, this._email);
             },
             this._validateEmail.bind(this));
-        this._validateEmail(this._emailEl.value, this._emailEl.validity);
+        this._validateEmail();
 
-        this._validateForm(this._formEl.checkValidity());
+        this._validateForm();
     }
 
     onFormChange(callback) {
@@ -60,21 +62,25 @@ export class UserValidator {
     }
 
     _registerValidationEvents(controlEl, activator, validator) {
-        controlEl.addEventListener('focus', activator.call(this, true));
+        controlEl.addEventListener('focus', () => {
+            activator.call(this, true);
+            this._validateForm();
+        });
 
-        controlEl.addEventListener('blur', activator.call(this, false));
+        controlEl.addEventListener('blur', () => {
+            activator.call(this, false);
+            this._validateForm();
+        });
 
-        controlEl.addEventListener('input', e => {
-            const value = e.target.value;
-            const validity = e.target.validity;
-            validator.call(this, value, validity);
-            this._validateForm(this._formEl.checkValidity());
+        controlEl.addEventListener('input', () => {
+            validator.call(this);
+            this._validateForm();
         });
     }
 
-    _validateForm(isValid) {
+    _validateForm() {
         let newForm = {
-            valid: isValid,
+            valid: this._formEl.checkValidity(),
             active: !this._username.active && !this._email.active
         };
         if (Utils.hasDirectChildChanges(this._form, newForm)) {
@@ -83,12 +89,14 @@ export class UserValidator {
         }
     }
 
-    _validateUsername(value, validity) {
-        let newUsername = {
+    _validateUsername() {
+        const value = this._usernameEl.value;
+        const validity = this._usernameEl.validity;
+        const newUsername = {
             firstSymbol: /^[a-zA-Z_].*$/.test(value),
             following3Symbols: /^.(?=[a-zA-Z]{3,}).*$/.test(value),
             remainingAny: /^.{4,4}[a-zA-Z0-9-_\.]*$/.test(value),
-            lengthRange: !validity.tooShort && !validity.tooLong,
+            lengthRange: !validity.valueMissing && !validity.tooShort && !validity.tooLong,
             valid: validity.valid,
             active: this._username.active
         };
@@ -98,7 +106,8 @@ export class UserValidator {
         }
     }
 
-    _validateEmail(value, validity) {
+    _validateEmail() {
+        const validity = this._emailEl.validity;
         let newEmail = {
             valid: validity.valid,
             active: this._email.active

@@ -8,6 +8,7 @@ export class ControlRenderer {
         
         this._validClassName = 'valid';
         this._invalidClassName = 'invalid';
+        this._hiddenClass = 'hidden';
 
         this._created = false;
     }
@@ -21,7 +22,7 @@ export class ControlRenderer {
                 this._createContent(validationState);
                 this._created = true;
             }
-            this._updateValHeaderNodeState(state.valid);
+            this._updateValHeaderNodeState(validationState.valid);
         } else {
             this._valContentRef.classList.add(this._hiddenClass);
         }
@@ -42,7 +43,7 @@ export class ControlRenderer {
                 <div class="val-rule__mark ${valMarkClass}"></div>
                 <div class="val-rule__text">${text}</div>
             </li>`;
-        return Utils.rawHtmlToFragment(html).firstChild;
+        return Utils.rawHtmlToFragment(html).firstElementChild;
     }
 
     _updateValRuleNodeState(ruleNode, isValid) {
@@ -51,7 +52,9 @@ export class ControlRenderer {
     }
 
     _updateValHeaderNodeState(isValid) {
-        this._updateNodeValClass(this._headerNode, isValid, this._validClassName, this._invalidClassName);
+        if (this._headerNode) {
+            this._updateNodeValClass(this._headerNode, isValid, this._validClassName, this._invalidClassName);
+        }
     }
 
     _updateNodeValClass(nodeRef, isValid, validClassName, invalidClassName) {
