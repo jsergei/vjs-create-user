@@ -8,29 +8,27 @@
 
 <body>
     <main>
-        <header class="form-header">
-            Create User
-        </header>
+        <header class="form-header">Create User</header>
         <form novalidate>
             <section class="form-controls">
                 <article>
                     <p>
-                        <label for="username">Username: </label>
+                        <label for="username">Username:</label>
                         <input id="username" type="text" required minlength="4" maxlength="20"
                             pattern="^[a-zA-Z_](?=[a-zA-Z]{3,})[a-zA-Z0-9-_\.]*$" />
                     </p>
                     <p>
-                        <label for="email">Email: </label>
+                        <label for="email">Email:</label>
                         <input id="email" required type="email" />
                     </p>
                     <p>
-                        <label for="password">Password: </label>
+                        <label for="password">Password:</label>
                         <input id="password" type="password" required minlength="8" maxlength="20"
                             pattern="^[a-zA-Z](?=.*[0-9]{2,})(?=.*[A-Z]+)[a-zA-Z0-9]*$" />
                     </p>
                     <p>
-                        <label for="confirmPassword">Confirm password: </label>
-                        <input id="confirmPassword" type="password" required minlength="8" maxlength="20"
+                        <label for="confirmPassword">Confirm password:</label>
+                        <input id="confirmPassword" type="password" required minlength="8" maxlength="100"
                             pattern="^[a-zA-Z](?=.*[0-9]{2,})(?=.*[A-Z]+)[a-zA-Z0-9]*$" />
                     </p>
                 </article>
@@ -53,10 +51,7 @@
                     </section>
                     <section class="validation-content__confirm-password hidden">
                         <header class="validation-content__header">Confirm password</header>
-                        <div class="val-rule">
-                            <div class="val-rule__mark"></div>
-                            <div class="val-rule__text">Must match with the password above</div>
-                        </div>
+                        <ul class="val-rule-list"></ul>
                     </section>
                 </aside>
             </section>
