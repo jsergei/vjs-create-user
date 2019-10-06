@@ -41,3 +41,9 @@ userValidator.onEmailChange(validationState => emailRenderer.render(validationSt
 userValidator.onPasswordChange(validationState => passwordRenderer.render(validationState));
 userValidator.onConfirmPasswordChange(validationState => confirmPasswordRenderer.render(validationState));
 userValidator.init();
+
+// Disable animation until all sections are hidden
+setTimeout(() => {
+    const validationCon = document.querySelector('.validation-content');
+    validationCon.classList.remove('init');
+}, 0);

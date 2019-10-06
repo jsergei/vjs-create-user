@@ -1,22 +1,29 @@
 .validation-content {
     flex: 1 1 auto;
     margin-left: 10px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
     border-left: 1px solid black;
     padding-left: 10px;
+
+    overflow: hidden;
+    position: relative;
+
+    > section {
+        transition: opacity 1s;
+    }
 }
 
-.validation-content__noselect {
+.validation-content.init > section {
+    transition-duration: 0s;
+}
+
+.noselect-img {
     background-image: url('../icons/question_mark.png');
     width: 100px;
+    height: 100px;
     background-size: contain;
     background-repeat: no-repeat;
-}
-
-.validation-content__username {
-    flex: 1 1 auto;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 .validation-content__header {
@@ -66,5 +73,8 @@
 }
 
 .hidden {
-    display: none;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    top: 0;
 }
