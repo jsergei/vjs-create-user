@@ -42,6 +42,18 @@
     background: linear-gradient(0deg, red, transparent);
 }
 
+@keyframes swell-and-return-1 {
+    from { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    to { transform: scale(1); }
+}
+
+@keyframes swell-and-return-2 {
+    from { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    to { transform: scale(1); }
+}
+
 .val-rule__mark {
     display: inline-block;
     width: 16px;
@@ -49,14 +61,22 @@
     background-size: contain;
     background-repeat: no-repeat;
     flex: 0 0 auto;
+
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-play-state: paused;
 }
 
 .val-rule__mark.valid {
     background-image: url('../icons/validation-tick-valid.png');
+    animation-name: swell-and-return-1;
+    animation-play-state: running;
 }
 
 .val-rule__mark.invalid {
     background-image: url('../icons/validation-tick-invalid.png');
+    animation-name: swell-and-return-2;
+    animation-play-state: running;
 }
 
 .val-rule {
